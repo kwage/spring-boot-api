@@ -41,9 +41,9 @@ const Dogs = () => {
 
     return (
     <React.Fragment>
-        <Divider style={{marginTop: 50}} />
+        <Divider style={{marginTop: 50, marginBottom: 20 }} />
         <Typography variant='h5'>
-            Dogs! <span style={{ fontSize: 14 }}>(Also a good GET Endpoint test)</span>
+            Dogs Images <span style={{ fontSize: 14 }}>(Also a good GET Endpoint test)</span>
         </Typography>
         <div>
             {!dogs || dogs.length === 0 ? 'Loading some pups...' : renderDogImages()}

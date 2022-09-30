@@ -11206,11 +11206,16 @@ var Dogs = function Dogs() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     style: {
-      marginTop: 50
+      marginTop: 50,
+      marginBottom: 20
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
     variant: "h5"
-  }, "Dogs!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !dogs || dogs.length === 0 ? 'Loading some pups...' : renderDogImages()));
+  }, "Dogs Images ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    style: {
+      fontSize: 14
+    }
+  }, "(Also a good GET Endpoint test)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !dogs || dogs.length === 0 ? 'Loading some pups...' : renderDogImages()));
 };
 
 Dogs.propTypes = {};
@@ -11267,11 +11272,11 @@ var Home = function Home() {
   }, "/api/dog"), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "h6"
   }, "GET - Get All Dogs - gets all dogs with appropriate properties"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Available Filters on Name, Breed, and Image URL (e.g. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    href: "/api/dog?breed='Pug'"
-  }, "/api/dog?breed=\"Pug\""), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    href: "/api/dog?breed=Pug"
+  }, "/api/dog?breed=Pug"), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "h6"
   }, "GET - Get Dog By Id - gets specific dog from supplied id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Example Request: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    href: "/api/dog?breed='Pug'"
+    href: "/api/dog/23"
   }, "/api/dog/23"), " (where 23 is the id of the dog)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "h6"
   }, "GET - Get Dog By Breeds - gets all dogs ordered by breeds"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Example Request: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -11281,7 +11286,7 @@ var Home = function Home() {
   }, "POST - Create Dog - creates a new dog object"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Required fields: image link (img) and a breed type (breed)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "h6"
   }, "PATCH - Update Dog By Id - updates a dog object of the supplied id in the path parameter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Example Request: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    href: "/api/dog?breed='Pug'"
+    href: "/api/dog/23"
   }, "/api/dog/23"), " (where 23 is the id of the dog)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Optional Fields: name, age, img. You cannot update likes or dislikes from this endpoint (See user API)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "h6"
   }, "DELETE - Delete Dog By Id - deletes a specified dog from the database"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Example Request: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -11374,10 +11379,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var RESUME_URL = 'https://s3.us-east-2.amazonaws.com/app.consultwithkyle.com/Kyle_Wegener_Resume_2022.pdf';
+var GIT_URL = 'https://github.com/kwage/spring-boot-api';
 
 var CommonToolbar = function CommonToolbar() {
   var handleResumeButtonClick = function handleResumeButtonClick() {
     window.open(RESUME_URL, '_blank');
+  };
+
+  var handleGitButtonClick = function handleGitButtonClick() {
+    window.open(GIT_URL, '_blank');
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -11385,7 +11395,10 @@ var CommonToolbar = function CommonToolbar() {
       flexGrow: 1
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_AppBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    position: "static"
+    position: "static",
+    style: {
+      backgroundColor: '#393e8f'
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Toolbar__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
     variant: "h6",
     component: "div",
@@ -11393,6 +11406,9 @@ var CommonToolbar = function CommonToolbar() {
       flexGrow: 1
     }
   }, "Disney API Interview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    color: "inherit",
+    onClick: handleGitButtonClick
+  }, "API Github"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     color: "inherit",
     onClick: handleResumeButtonClick
   }, "Kyle's Resume"))));
