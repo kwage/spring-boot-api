@@ -3,6 +3,7 @@ package com.disney.studios.controllers.api;
 import com.disney.studios.models.Dog;
 import com.disney.studios.models.data.DogDao;
 import com.disney.studios.utilities.DogApiFilter;
+import com.disney.studios.utilities.ParameterCleaner;
 import com.disney.studios.validators.DogApiValidator;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +42,8 @@ public class DogController {
             allDogs.forEach(dogs::add);
 
             for (String key : filterRequestParams.keySet()) {
-                DogApiFilter.filterDogListByKeyValuePair(dogs, key, filterRequestParams.get(key));
+                String value = ParameterCleaner.clean(filterRequestParams.get(key));
+                DogApiFilter.filterDogListByKeyValuePair(dogs, key, value);
             }
 
             JSONArray array = new JSONArray();
