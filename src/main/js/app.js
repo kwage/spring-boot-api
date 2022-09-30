@@ -1,28 +1,24 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Home from './components/Home';
+import Second from './components/Second';
 
-class App extends React.Component {
+const routes = () => (
+	<BrowserRouter>
+		<Switch>
+			<Route path="/" render={routeProps => <Home {...routeProps} />} />
+			<Route path="/second" render={routeProps => <Second {...routeProps} />} />
+		</Switch>
+	</BrowserRouter>
+)
 
-	constructor(props) {
-		super(props);
-		this.state = {employees: []};
-	}
-
-	componentDidMount() {
-		/* client({method: 'GET', path: '/api/employees'}).done(response => {
-			this.setState({employees: response.entity._embedded.employees});
-		}); */
-	}
-
-	render() {
-		return (
-			<div>Here we are</div>
-		)
-	}
-}
-
-ReactDOM.render(
-	<App />,
+render(
+	routes(),
 	document.getElementById('react')
 )
 

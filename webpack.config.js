@@ -14,6 +14,9 @@ module.exports = {
             {
                 test: path.join(__dirname, '.'),
                 exclude: /(node_modules)/,
+                resolve: {
+                    extensions: [".jsx", ".js", ".json"]
+                 },
                 use: [{
                     loader: 'babel-loader',
                     options: {

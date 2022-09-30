@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.disney.studios</groupId>
-    <artifactId>api_interview</artifactId>
-    <version>0.1.0</version>
+    <artifactId>api-interview</artifactId>
+    <version>0.1.3</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,6 +29,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
         </dependency>
 
         <!-- Runtime dependencies -->

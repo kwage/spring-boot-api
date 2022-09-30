@@ -1,5 +1,6 @@
 package com.disney.studios;
 
+import com.disney.studios.models.Dog;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,10 @@ import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 /**
  * Loads stored objects from the file system and builds up
@@ -19,6 +24,10 @@ import java.io.InputStreamReader;
  */
 @Component
 public class PetLoader implements InitializingBean {
+
+    // name of dog table
+    private final String DOG_TABLE_NAME = "DOG";
+
     // Resources to the different files we need to load.
     @Value("classpath:data/labrador.txt")
     private Resource labradors;
@@ -43,6 +52,8 @@ public class PetLoader implements InitializingBean {
      */
     @Override
     public void afterPropertiesSet() throws Exception {
+        // boolean result = createDogTable();
+        // System.out.println("TABLE CREATE RESULT: " + result);
         loadBreed("Labrador", labradors);
         loadBreed("Pug", pugs);
         loadBreed("Retriever", retrievers);
@@ -56,14 +67,18 @@ public class PetLoader implements InitializingBean {
      * @param source The file holding the breeds.
      * @throws IOException In case things go horribly, horribly wrong.
      */
-    private void loadBreed(String breed, Resource source) throws IOException {
+    private void loadBreed(String breed, Resource source) throws IOException, SQLException {
+        Connection con = dataSource.getConnection();
+        // String insertQuery = "INSERT INTO " + DOG_TABLE_NAME + "(img_url, breed, like_count) VALUES (?, ?, 0)";
+        String insertQuery = "INSERT INTO " + DOG_TABLE_NAME + "(img, breed, likes, dislikes) VALUES (?, ?, 0, 0)";
+
+        PreparedStatement insertStatement = con.prepareStatement(insertQuery);
         try ( BufferedReader br = new BufferedReader(new InputStreamReader(source.getInputStream()))) {
             String line;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                /* TODO: Create appropriate objects and save them to
-                 *       the datasource.
-                 */
+                insertStatement.setString(1, line);
+                insertStatement.setString(2, breed);
+                insertStatement.executeUpdate();
             }
         }
     }
